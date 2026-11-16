@@ -1,0 +1,22 @@
+{
+    "1": {
+        "name": "أحمد محمود",
+        "title": "Software Engineer",
+        "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300",
+        "cv": "#",
+        "phone": "+201000000000",
+        "whatsapp": "201000000000",
+        "email": "ahmed@example.com",
+        "github": "https://github.com"
+    },
+    "2": {
+        "name": "محمد رمضان",
+        "title": "Computer Science Student",
+        "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300",
+        "cv": "#",
+        "phone": "+201111111111",
+        "whatsapp": "201111111111",
+        "email": "mohamed111ramadan255@gmail.com",
+        "github": "https://github.com/MahamedRamadan"
+    }
+}
