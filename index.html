@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">بروفايل العميل</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .card-container {
+            width: 100%;
+            max-width: 400px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        .profile-img-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #007bff;
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
+        }
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .profile-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .profile-title {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        .links-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .btn-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 12px 20px;
+            background: #f8f9fa;
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            border-radius: 12px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        .btn-link:hover {
+            background: #007bff;
+            color: #ffffff;
+            border-color: #007bff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
+        }
+        .btn-cv {
+            background: #28a745;
+            color: #ffffff;
+            border-color: #28a745;
+        }
+        .btn-cv:hover {
+            background: #218838;
+            border-color: #1e7e34;
+        }
+        .loading {
+            font-size: 16px;
+            color: #6c757d;
+            padding: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container" id="card-box">
+        <div class="loading">جاري تحميل البيانات...</div>
+    </div>
+
+    <script>
+        // قاعدة بيانات وهمية أو مبدئية لتجربة الكود (مستقبلاً سنربطها بـ Google Sheets أو ملف JSON)
+        const clientsData = {
+            "1": {
+                name: "أحمد محمود",
+                title: "Software Engineer",
+                image: "https://via.placeholder.com/150",
+                cv: "https://example.com/cv1.pdf",
+                phone: "+201000000000",
+                whatsapp: "201000000000",
+                email: "ahmed@example.com",
+                github: "https://github.com"
+            },
+            "2": {
+                name: "محمد رمضان",
+                title: "Computer Science Student",
+                image: "https://via.placeholder.com/150",
+                cv: "https://example.com/cv2.pdf",
+                phone: "+201111111111",
+                whatsapp: "201111111111",
+                email: "mohamed111ramadan255@gmail.com",
+                github: "https://github.com/MahamedRamadan"
+            }
+        };
+
+        // قراءة الـ ID من الرابط (مثلاً: index.html?id=1)
+        const urlParams = new URLSearchParams(window.location.search);
+        const clientId = urlParams.get('id');
+        const cardBox = document.getElementById('card-box');
+
+        if (clientId && clientsData[clientId]) {
+            const client = clientsData[clientId];
+            document.getElementById('page-title').innerText = client.name + " - بروفايل شخصي";
+            
+            cardBox.innerHTML = `
+                <div class="profile-img-container">
+                    <img src="${client.image}" alt="${client.name}">
+                </div>
+                <h1 class="profile-name">${client.name}</h1>
+                <p class="profile-title">${client.title}</p>
+                
+                <div class="links-list">
+                    <a href="${client.cv}" class="btn-link btn-cv" target="_blank">📄 تحميل السيرة الذاتية (CV)</a>
+                    <a href="tel:${client.phone}" class="btn-link">📞 اتصال مباشر</a>
+                    <a href="https://wa.me/${client.whatsapp}" class="btn-link" target="_blank">💬 مراسلة واتساب</a>
+                    <a href="mailto:${client.email}" class="btn-link">📧 البريد الإلكتروني</a>
+                    <a href="${client.github}" class="btn-link" target="_blank">💻 حساب جيت هب (GitHub)</a>
+                </div>
+            `;
+        } else {
+            cardBox.innerHTML = `<h3 style="color: #dc3545;">عذراً، العميل غير موجود أو الرابط غير صحيح.</h3>`;
+        }
+    </script>
+</body>
+</html>
